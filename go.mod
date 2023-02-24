@@ -1,6 +1,8 @@
-module changeme
+module github.com/villa01/task-manager
 
 go 1.18
+
+require github.com/mackerelio/go-osstat v0.2.3
 
 require github.com/wailsapp/wails/v2 v2.3.1
 

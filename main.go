@@ -12,15 +12,15 @@ import (
 var assets embed.FS
 
 type HardWareResponse struct {
-	cpuStats  osStats.CPUStats
-	diskStats osStats.DiskStats
+	CpuStats  osStats.CPUStats  `json:"cpu_stats"`
+	DiskStats osStats.DiskStats `json:"disk_stats"`
 }
 
 func getHardwareInfo() HardWareResponse {
 	stats := osStats.GetStats()
 	return HardWareResponse{
-		cpuStats:  stats.CpuStats,
-		diskStats: stats.DiskStats,
+		CpuStats:  stats.CpuStats,
+		DiskStats: stats.DiskStats,
 	}
 }
 
@@ -46,5 +46,4 @@ func main() {
 	if err != nil {
 		println("Error:", err.Error())
 	}
-	getHardwareInfo()
 }

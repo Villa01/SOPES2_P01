@@ -1,26 +1,32 @@
 import {useState} from 'react';
 import logo from './assets/images/logo-universal.png';
 import './App.css';
-import {Greet} from "../wailsjs/go/main/App";
 
+
+import {GetOSData} from "../wailsjs/go/main/App";
+import Charts from "./Components/Charts/Charts.jsx";
 function App() {
-    const [resultText, setResultText] = useState("Please enter your name below 👇");
-    const [name, setName] = useState('');
-    const updateName = (e) => setName(e.target.value);
-    const updateResultText = (result) => setResultText(result);
 
-    function greet() {
-        Greet(name).then(updateResultText);
+    const [data, setData] = useState('');
+
+    const getOSDataHandler = () => {
+        const hardwareData = GetOSData()
+            .then( data => {
+                console.log(data)
+                setData(JSON.stringify(data))
+            })
+            .catch(err => console.log(err))
+
     }
 
     return (
         <div id="App">
-            <img src={logo} id="logo" alt="logo"/>
-            <div id="result" className="result">{resultText}</div>
-            <div id="input" className="input-box">
-                <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text"/>
-                <button className="btn" onClick={greet}>Greet</button>
+            <div className="result">
+                <h1>Hardware Monitor</h1>
+                Erick José André Villatoro Revolorio
+                201900907
             </div>
+            <Charts></Charts>
         </div>
     )
 }

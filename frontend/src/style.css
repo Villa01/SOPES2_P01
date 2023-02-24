@@ -24,3 +24,17 @@ body {
     height: 100vh;
     text-align: center;
 }
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    height: 30rem;
+    align-items: center;
+    margin: 0;
+}
+
+.container div {
+    padding: 0;
+    height: 100%;
+    flex-basis: 45%;
+}
